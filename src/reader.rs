@@ -11,10 +11,13 @@ pub fn run_reader() {
     // let mut wrong_counter =0u64; 
      
     loop {
-        let seq = shm.seq.load(Ordering::Relaxed);
+
+        let seq = shm.seq.load(Ordering::Acquire);
+        let time = shm.time.load(Ordering::Relaxed);
         
-        if seq % 1000 == 0 {
-            println!("found seq {} ", seq);
+        
+        if seq % 10000 == 0 {
+            println!("found seq {} and lat {} ns", seq , now_ns()-time);
         }
 
     }

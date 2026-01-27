@@ -5,7 +5,9 @@ use core::arch::x86_64::{_rdtsc, _mm_lfence};
 
 
 pub fn now_ns() -> u64 {    
-    get_ticks() 
+    get_ticks() * 1_000_000_000 / 24_000_000
+    //get_ticks()  
+    
 }
 
 #[inline(always)]

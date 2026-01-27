@@ -9,13 +9,13 @@ pub fn run_writer() {
     
     loop {
         
-        
+        shm.time.store(now_ns(), Ordering::Relaxed);
         shm.seq.store(seq, Ordering::Release);
         
         seq += 1;
-        if seq % 100_000 ==0 {
+        if seq % 1_000_000_000 == 0 {
             println!("reaching {}" , seq);
         }
-        std::thread::sleep(Duration::from_nanos(1));;
+        //std::thread::sleep(Duration::from_nanos(1));;
     }
 }

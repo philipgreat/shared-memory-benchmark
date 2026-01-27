@@ -2,6 +2,6 @@ all:
 	cargo run --release -- writer &
 	cargo run --release -- reader
 kill:
-	pkill -INT cargo || true
+	pkill -INT shared-memory-benchmark || true
 	sleep 2
-	pkill -9 cargo || true
+	pkill -9 shared-memory-benchmark || true
