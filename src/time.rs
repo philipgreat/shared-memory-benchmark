@@ -1,3 +1,9 @@
+use std::time::{Duration, Instant};
+
+#[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
+use core::arch::x86_64::{_rdtsc, _mm_lfence};
+
+
 pub fn now_ns() -> u64 {    
     get_ticks() 
 }
