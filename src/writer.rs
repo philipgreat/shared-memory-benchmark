@@ -5,7 +5,7 @@ use std::time::{Duration};
 pub fn run_writer() {
     let socket = UdpSocket::bind("0.0.0.0:0").expect("bind failed");
     socket
-        .connect("127.0.0.1:9000")
+        .connect("127.0.0.1:19000")
         .expect("connect failed");
 
     let mut seq: u64 = 1;
@@ -25,7 +25,7 @@ pub fn run_writer() {
         socket.send(&buf).unwrap();
         std::thread::sleep(Duration::from_nanos(1_000_000));
         seq += 1;
-        
+
 
     }
 

@@ -3,7 +3,7 @@ use crate::time::now_ns;
 
 pub fn run_reader() {
     // 1️⃣ 绑定接收端口
-    let socket = UdpSocket::bind("0.0.0.0:9000")
+    let socket = UdpSocket::bind("0.0.0.0:19000")
         .expect("bind udp receiver failed");
 
     // 可选：扩大内核接收缓冲，减少丢包
