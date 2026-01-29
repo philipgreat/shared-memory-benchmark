@@ -12,7 +12,7 @@ pub fn run_reader() {
     let mut buf = [0u8; 16];
 
     let mut start = now_ns();
-    let report_cycle = 1_000_000u64;
+    let report_cycle = 1_000u64;
 
     
 
@@ -30,13 +30,13 @@ pub fn run_reader() {
 
 
         // 5️⃣ 周期性打印
-        //if seq % report_cycle == 0 {
+        if seq % report_cycle == 0 {
 
             let end = now_ns();
             let lat = end - time;
 
             println!(
-                "current seq {} | elapsed {} s | lat {} ns ",
+                "current seq {} | time-from-start {} s | lat {} ns ",
                 seq,
                 (end - start) / 1_000_000_000,
                 lat
@@ -44,6 +44,6 @@ pub fn run_reader() {
 
             // 重置窗口
            
-        //}
+        }
     }
 }
