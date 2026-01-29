@@ -1,14 +1,14 @@
 // src/writer.rs
 use std::{net::UdpSocket, sync::atomic::Ordering};
 use crate::{layout::ShmLayout, shm::create_or_open, time::now_ns};
-
+use std::time::{Duration};
 pub fn run_writer() {
     let socket = UdpSocket::bind("0.0.0.0:0").expect("bind failed");
     socket
         .connect("127.0.0.1:9000")
         .expect("connect failed");
 
-    let mut seq: u64 = 0;
+    let mut seq: u64 = 1;
     let mut buf = [0u8; 16];
 
     loop {
@@ -23,9 +23,9 @@ pub fn run_writer() {
 
         // 3️⃣ 发送
         socket.send(&buf).unwrap();
-
+        std::thread::sleep(Duration::from_nanos(1_000_000));
         seq += 1;
-
+        
 
     }
 

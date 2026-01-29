@@ -26,13 +26,11 @@ pub fn run_reader() {
         // 3️⃣ 解析 seq / time（网络字节序）
         let seq = u64::from_be_bytes(buf[..8].try_into().unwrap());
         let time = u64::from_be_bytes(buf[8..].try_into().unwrap());
-
         
 
-        
 
         // 5️⃣ 周期性打印
-        if seq % report_cycle == 0 {
+        //if seq % report_cycle == 0 {
 
             let end = now_ns();
             let lat = end - time;
@@ -46,6 +44,6 @@ pub fn run_reader() {
 
             // 重置窗口
            
-        }
+        //}
     }
 }
