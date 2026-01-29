@@ -1,6 +1,6 @@
 // src/writer.rs
-use std::{sync::atomic::Ordering, time::Duration};
-use crate::{shm::create_or_open, time::now_ns,layout::ShmLayout};
+use std::{sync::atomic::Ordering};
+use crate::{shm::create_or_open, time::now_ns};
 
 pub fn run_writer() {
     let shm = unsafe { &*create_or_open() };
@@ -13,9 +13,9 @@ pub fn run_writer() {
         shm.seq.store(seq, Ordering::Release);
         
         seq += 1;
-        if seq % 1_000_000_000 == 0 {
-            println!("reaching {}" , seq);
-        }
+        // if seq % 1_000_000_000 == 0 {
+        //     println!("reaching {}" , seq);
+        // }
         //std::thread::sleep(Duration::from_nanos(1));;
     }
 }

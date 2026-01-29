@@ -1,4 +1,4 @@
-all:
+all: kill
 	cargo run --release -- writer &
 	cargo run --release -- reader
 kill:
